@@ -87,9 +87,13 @@ export const BENEFITS: Array<Benefit> = [
   },
 ]
 
+/**
+ * Ids are the API's `whoYouAre` enum values verbatim (snake_case) so they can be
+ * submitted without translation — the endpoint 400s on anything else.
+ */
 export const ROLES: Array<Role> = [
-  { id: "venue-owner", label: "Venue owner" },
-  { id: "event-planner", label: "Event planner" },
+  { id: "venue_owner", label: "Venue owner" },
+  { id: "event_planner", label: "Event planner" },
   { id: "individual", label: "Individual" },
   { id: "couple", label: "Couple" },
   { id: "corporate", label: "Corporate" },

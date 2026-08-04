@@ -1,24 +1,40 @@
 import { useState } from "react"
-import type { ChangeEvent } from "react"
-import { Info, Mail, User } from "lucide-react"
+import type { FormEvent } from "react"
+import { Check, Info, Loader2, Mail, User } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { cn } from "@/lib/utils"
 
 import { RoleSelector } from "./role-selector"
+import { useWaitlistSignup } from "../hooks/use-waitlist-signup"
+import type { WhoYouAre } from "../api/waitlist"
 
 /**
  * The white form card that sits on the purple waitlist section.
- * Uses local state only — there is no backend wired up yet.
+ * Submits to POST /api/waitlist.
  */
 export function WaitlistFormCard() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
-  const [role, setRole] = useState<string | null>(null)
+  const [role, setRole] = useState<WhoYouAre | null>(null)
+  const { submit, clearError, message, isSubmitting, isSuccess, isError } =
+    useWaitlistSignup()
 
-  function onSubmit(event: ChangeEvent<HTMLFormElement>) {
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    if (isSubmitting || isSuccess) return
+
+    // The design asks for a full name but the API only stores `firstName` (and
+    // rejects unknown fields), so we send the leading token and let the rest go.
+    const firstName = name.trim().split(/\s+/)[0]
+
+    await submit({
+      email: email.trim(),
+      ...(firstName ? { firstName } : {}),
+      ...(role ? { whoYouAre: role } : {}),
+    })
   }
 
   return (
@@ -42,6 +58,7 @@ export function WaitlistFormCard() {
                 id="waitlist-name"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
+                disabled={isSubmitting || isSuccess}
                 placeholder="Enter your full name"
                 className="h-11 pl-9"
               />
@@ -55,9 +72,16 @@ export function WaitlistFormCard() {
               <Input
                 id="waitlist-email"
                 type="email"
+                required
                 value={email}
-                onChange={(event) => setEmail(event.target.value)}
+                onChange={(event) => {
+                  setEmail(event.target.value)
+                  clearError()
+                }}
+                disabled={isSubmitting || isSuccess}
                 placeholder="Enter your email address"
+                aria-invalid={isError || undefined}
+                aria-describedby={message ? "waitlist-status" : undefined}
                 className="h-11 pl-9"
               />
             </div>
@@ -65,7 +89,11 @@ export function WaitlistFormCard() {
 
           <div className="flex flex-col gap-2">
             <Label>I am a…</Label>
-            <RoleSelector value={role} onChange={setRole} />
+            <RoleSelector
+              value={role}
+              onChange={setRole}
+              disabled={isSubmitting || isSuccess}
+            />
           </div>
         </div>
 
@@ -73,10 +101,37 @@ export function WaitlistFormCard() {
           <Button
             type="submit"
             size={"lg"}
-            className="w-full bg-brand py-3 text-white hover:bg-brand"
+            disabled={isSubmitting || isSuccess}
+            className="w-full bg-brand py-3 text-white hover:bg-brand disabled:opacity-100"
           >
-            Reserve your spot
+            {isSubmitting ? (
+              <>
+                <Loader2 className="animate-spin" />
+                Reserving your spot…
+              </>
+            ) : isSuccess ? (
+              <>
+                <Check />
+                You're on the list
+              </>
+            ) : (
+              "Reserve your spot"
+            )}
           </Button>
+
+          {message ? (
+            <p
+              id="waitlist-status"
+              role="status"
+              aria-live="polite"
+              className={cn(
+                "text-center text-sm",
+                isError ? "text-destructive" : "text-brand"
+              )}
+            >
+              {message}
+            </p>
+          ) : null}
 
           <div className="text-soft flex items-center justify-center gap-1.5 text-xs">
             <Info className="size-3.5" />

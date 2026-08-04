@@ -2,6 +2,7 @@ import { motion  } from "motion/react"
 import type {Variants} from "motion/react";
 
 import { HERO_VENUES, WAITLIST_COUNT } from "../data"
+import { useWaitlistCount } from "../hooks/use-waitlist-count"
 import { Container } from "./container"
 import { HeroWaitlistForm } from "./hero-waitlist-form"
 import { VenueCard } from "./venue-card"
@@ -14,6 +15,10 @@ const venueRowVariants: Variants = {
 
 /** Dark hero: badge, headline, subtitle, waitlist form, social proof, venues. */
 export function HeroSection() {
+  // Null until the count request lands (or if it fails) — the static copy shows
+  // in the meantime so the line is never empty or jarring.
+  const liveCount = useWaitlistCount()
+
   return (
     <section id="hero" className="relative overflow-hidden bg-black pt-28 pb-0 md:pt-36">
       <Container className="flex flex-col items-center space-y-6 text-center md:space-y-7">
@@ -36,7 +41,9 @@ export function HeroSection() {
           <HeroWaitlistForm />
           <p className="text-sm text-white">
             <span className="font-medium text-brand">
-              {WAITLIST_COUNT}
+              {liveCount === null
+                ? WAITLIST_COUNT
+                : liveCount.toLocaleString("en-NG")}
             </span>{" "}
             people already waiting
           </p>
