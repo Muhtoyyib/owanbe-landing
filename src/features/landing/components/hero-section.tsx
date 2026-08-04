@@ -1,11 +1,12 @@
 import { motion  } from "motion/react"
 import type {Variants} from "motion/react";
 
-import { HERO_VENUES, WAITLIST_COUNT } from "../data"
+import { HERO_VENUES } from "../data"
 import { useWaitlistCount } from "../hooks/use-waitlist-count"
 import { Container } from "./container"
 import { HeroWaitlistForm } from "./hero-waitlist-form"
 import { VenueCard } from "./venue-card"
+import { WaitlistSocialProof } from "./waitlist-social-proof"
 
 /** Staggers the venue cards in one after another when the row enters view. */
 const venueRowVariants: Variants = {
@@ -15,9 +16,8 @@ const venueRowVariants: Variants = {
 
 /** Dark hero: badge, headline, subtitle, waitlist form, social proof, venues. */
 export function HeroSection() {
-  // Null until the count request lands (or if it fails) — the static copy shows
-  // in the meantime so the line is never empty or jarring.
-  const liveCount = useWaitlistCount()
+  // Owned here so a successful signup can refresh the figure it sits next to.
+  const { state: waitlistCount, refresh: refreshCount } = useWaitlistCount()
 
   return (
     <section id="hero" className="relative overflow-hidden bg-black pt-28 pb-0 md:pt-36">
@@ -38,15 +38,8 @@ export function HeroSection() {
         </p>
 
         <div className="w-full space-y-2">
-          <HeroWaitlistForm />
-          <p className="text-sm text-white">
-            <span className="font-medium text-brand">
-              {liveCount === null
-                ? WAITLIST_COUNT
-                : liveCount.toLocaleString("en-NG")}
-            </span>{" "}
-            people already waiting
-          </p>
+          <HeroWaitlistForm onJoined={refreshCount} />
+          <WaitlistSocialProof count={waitlistCount} />
         </div>
 
         <motion.div

@@ -133,7 +133,6 @@ export const FAQS: Array<FaqItem> = [
   },
 ]
 
-export const WAITLIST_COUNT = "2,400+"
 export const CONTACT_EMAIL = "hello@owambespace.com"
 export const BRAND_NAME = "Owambe Space"
 export const LAUNCH_CITIES = "Lagos, Ibadan, Abuja, and Port Harcourt"

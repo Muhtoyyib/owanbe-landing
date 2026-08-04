@@ -8,8 +8,13 @@ import { cn } from "@/lib/utils"
 
 import { useWaitlistSignup } from "../hooks/use-waitlist-signup"
 
+interface HeroWaitlistFormProps {
+  /** Called after a successful signup so the count beside it can refresh. */
+  onJoined?: () => void
+}
+
 /** Inline email capture row for the hero — posts to POST /api/waitlist. */
-export function HeroWaitlistForm() {
+export function HeroWaitlistForm({ onJoined }: HeroWaitlistFormProps) {
   const [email, setEmail] = useState("")
   const { submit, clearError, message, isSubmitting, isSuccess, isError } =
     useWaitlistSignup()
@@ -17,7 +22,7 @@ export function HeroWaitlistForm() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     if (isSubmitting || isSuccess) return
-    await submit({ email: email.trim() })
+    if (await submit({ email: email.trim() })) onJoined?.()
   }
 
   return (
