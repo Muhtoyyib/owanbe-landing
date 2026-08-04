@@ -15,7 +15,7 @@ export function HeroWaitlistForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mx-auto flex w-full max-w-110 flex-col gap-2 sm:flex-row"
+      className="mx-auto flex w-4/5 max-w-110 flex-col gap-2 sm:flex-row"
     >
       <Input
         type="email"

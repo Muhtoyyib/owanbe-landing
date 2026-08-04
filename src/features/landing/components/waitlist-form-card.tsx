@@ -22,7 +22,7 @@ export function WaitlistFormCard() {
   }
 
   return (
-    <div className="w-full max-w-lg rounded-3xl bg-card p-8 shadow-xl md:p-10">
+    <div className="w-full max-w-lg rounded-3xl bg-card p-6 shadow-xl md:p-10">
       <div className="flex flex-col gap-3">
         <h3 className="text-strong font-display text-[28px] leading-tight font-normal tracking-wide trim-cap">
           Join the waitlist

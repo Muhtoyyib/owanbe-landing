@@ -15,8 +15,8 @@ const venueRowVariants: Variants = {
 /** Dark hero: badge, headline, subtitle, waitlist form, social proof, venues. */
 export function HeroSection() {
   return (
-    <section id="hero" className="relative overflow-hidden bg-black pt-36 pb-0">
-      <Container className="flex flex-col items-center space-y-7 text-center">
+    <section id="hero" className="relative overflow-hidden bg-black pt-28 pb-0 md:pt-36">
+      <Container className="flex flex-col items-center space-y-6 text-center md:space-y-7">
         <span className="inline-flex items-center gap-2 rounded-full border-brand bg-brand-light px-4 py-1.5 font-sans text-xs font-normal tracking-wide text-brand uppercase">
           <span className="size-1.5 rounded-full bg-brand" />
           Now accepting early access
@@ -27,7 +27,7 @@ export function HeroSection() {
           here
         </h1>
 
-        <p className="max-w-147.5 text-lg text-white/70">
+        <p className="max-w-147.5 text-base text-white/70 md:text-lg">
           Owambe Space is Nigeria's modern platform for discovering, comparing,
           and booking event venues with everything else you need in one place.
         </p>
@@ -47,7 +47,7 @@ export function HeroSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="mt-10 flex w-full gap-7 overflow-x-auto px-1 pt-6 pb-12 lg:justify-center lg:items-center lg:overflow-x-visible"
+          className="mt-6 flex w-full gap-4 overflow-x-auto px-1 pt-6 pb-12 md:mt-10 md:gap-7 lg:items-center lg:justify-center lg:overflow-x-visible"
         >
           {HERO_VENUES.map((venue) => (
             <VenueCard key={venue.id} venue={venue} />

@@ -7,7 +7,7 @@ import { WaitlistFormCard } from "./waitlist-form-card"
  */
 export function WaitlistSection() {
   return (
-    <section id="waitlist" className="bg-brand py-24">
+    <section id="waitlist" className="bg-brand py-16 md:py-24">
       <Container>
         <SectionHeader
           tone="dark"

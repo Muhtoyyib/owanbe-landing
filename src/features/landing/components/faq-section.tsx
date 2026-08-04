@@ -10,7 +10,7 @@ import { FAQS } from "../data"
  */
 export function FaqSection() {
   return (
-    <section id="faq" className="py-24">
+    <section id="faq" className="py-16 md:py-24">
       <Container>
         <SectionHeader
           eyebrow="COMMON QUESTIONS"
