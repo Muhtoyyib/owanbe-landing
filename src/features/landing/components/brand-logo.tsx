@@ -1,15 +1,15 @@
-import { cn } from "@/lib/utils"
+import {cn} from "cn";
 
-import { BRAND_NAME } from "../data"
-import Logo from "@/components/assets/images/logo.svg"
+import {BRAND_NAME} from "../data";
+import Logo from "@/components/assets/images/logo.svg";
 
 interface BrandLogoProps {
-  className?: string
+  className?: string;
   /** dark = white text (over the dark hero nav); light = foreground text (footer). */
-  tone?: "light" | "dark"
+  tone?: "light" | "dark";
 }
 
-export function BrandLogo({ className, tone = "light" }: BrandLogoProps) {
+export function BrandLogo({className, tone = "light"}: BrandLogoProps) {
   return (
     <span
       className={cn(
@@ -18,8 +18,8 @@ export function BrandLogo({ className, tone = "light" }: BrandLogoProps) {
         className
       )}
     >
-      <img src={Logo} />
-      <h1 className="trim-cap font-display">{BRAND_NAME}</h1>
+      <img src={Logo} alt="" aria-hidden="true" />
+      <span className="trim-cap font-display">{BRAND_NAME}</span>
     </span>
-  )
+  );
 }

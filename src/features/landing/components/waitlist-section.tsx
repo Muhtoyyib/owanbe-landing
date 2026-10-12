@@ -1,6 +1,6 @@
-import { Container } from "./container"
-import { SectionHeader } from "./section-header"
-import { WaitlistFormCard } from "./waitlist-form-card"
+import {Container} from "./container";
+import {SectionHeader} from "./section-header";
+import {WaitlistFormCard} from "./waitlist-form-card";
 
 /**
  * Full-width purple waitlist section: heading + centered form card.
@@ -21,5 +21,5 @@ export function WaitlistSection() {
         </div>
       </Container>
     </section>
-  )
+  );
 }

@@ -1,0 +1,39 @@
+name: Deploy
+
+# Merges to main upload a tagged Worker version. Traffic promotion happens in
+# Cloudflare (Workers Builds / gradual deployments) — this workflow only uploads.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install Vite+
+        run: curl -fsSL https://vite.plus | bash
+
+      - name: Install dependencies
+        run: vp install --frozen-lockfile
+
+      - name: Build
+        run: vp run build
+
+      - name: Upload Worker version
+        run: vp run cf:upload
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

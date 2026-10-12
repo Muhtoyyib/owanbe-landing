@@ -1,28 +1,27 @@
-import { useState } from "react"
-import type { FormEvent } from "react"
-import { Check, Loader2 } from "lucide-react"
+import {useState} from "react";
+import type {FormEvent} from "react";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { cn } from "@/lib/utils"
+import {Input} from "@/components/ui/input";
+import {cn} from "cn";
 
-import { useWaitlistSignup } from "../hooks/use-waitlist-signup"
+import {FormStatus} from "./form-status";
+import {WaitlistSubmitButton} from "./waitlist-submit-button";
+import {useWaitlistSignup} from "../hooks/use-waitlist-signup";
 
 interface HeroWaitlistFormProps {
   /** Called after a successful signup so the count beside it can refresh. */
-  onJoined?: () => void
+  onJoined?: () => void;
 }
 
 /** Inline email capture row for the hero — posts to POST /api/waitlist. */
-export function HeroWaitlistForm({ onJoined }: HeroWaitlistFormProps) {
-  const [email, setEmail] = useState("")
-  const { submit, clearError, message, isSubmitting, isSuccess, isError } =
-    useWaitlistSignup()
+export function HeroWaitlistForm({onJoined}: HeroWaitlistFormProps) {
+  const [email, setEmail] = useState("");
+  const {submit, clearError, message, isSubmitting, isSuccess, isError} = useWaitlistSignup();
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    if (isSubmitting || isSuccess) return
-    if (await submit({ email: email.trim() })) onJoined?.()
+    event.preventDefault();
+    if (isSubmitting || isSuccess) return;
+    if (await submit({email: email.trim()})) onJoined?.();
   }
 
   return (
@@ -30,52 +29,31 @@ export function HeroWaitlistForm({ onJoined }: HeroWaitlistFormProps) {
       <form onSubmit={handleSubmit} className="flex flex-col gap-2 sm:flex-row">
         <Input
           type="email"
+          variant="hero"
           required
           value={email}
           onChange={(event) => {
-            setEmail(event.target.value)
-            clearError()
+            setEmail(event.target.value);
+            clearError();
           }}
           disabled={isSubmitting || isSuccess}
           placeholder="Enter your email address"
           aria-label="Email address"
           aria-invalid={isError || undefined}
           aria-describedby={message ? "hero-waitlist-status" : undefined}
-          className="h-10 flex-1 rounded-xl border-transparent bg-white px-5 text-foreground placeholder:text-placeholder disabled:opacity-100"
+          className="flex-1"
         />
-        <Button
-          type="submit"
-          disabled={isSubmitting || isSuccess}
-          className="h-10 rounded-xl bg-brand px-6 tracking-wide text-white hover:bg-brand/90 disabled:opacity-100"
-        >
-          {isSubmitting ? (
-            <>
-              <Loader2 className="animate-spin" />
-              Joining…
-            </>
-          ) : isSuccess ? (
-            <>
-              <Check />
-              You're in
-            </>
-          ) : (
-            "Join the waitlist"
-          )}
-        </Button>
+        <WaitlistSubmitButton
+          isSubmitting={isSubmitting}
+          isSuccess={isSuccess}
+          label="Join the waitlist"
+          submittingLabel="Joining…"
+          successLabel="You're in"
+          className="h-10 px-6"
+        />
       </form>
 
-      {/* aria-live announces the outcome without stealing focus. Only rendered
-          once there is something to say. */}
-      {message ? (
-        <p
-          id="hero-waitlist-status"
-          role="status"
-          aria-live="polite"
-          className={cn("text-sm", isError ? "text-coral" : "text-white")}
-        >
-          {message}
-        </p>
-      ) : null}
+      <FormStatus id="hero-waitlist-status" message={message} className={cn("text-sm", isError ? "text-coral" : "text-white")} />
     </div>
-  )
+  );
 }

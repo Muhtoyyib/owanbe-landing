@@ -1,0 +1,23 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "common.language": "Language",
+  "common.languages.en": "English",
+  "site.nav.home": "Home",
+  "site.nav.blog": "Blog",
+  "site.nav.waitlist": "Join the waitlist",
+  "site.not_found.eyebrow": "Page not found",
+  "site.not_found.description": "The page you're looking for doesn't exist or has moved.",
+  "site.not_found.home": "Back to home",
+  "site.not_found.back": "Go back",
+  "site.blog.eyebrow": "The OwanbeSpace blog",
+  "site.blog.title": "Notes on planning better events",
+  "site.blog.description": "Practical guides, vendor spotlights, and product updates from the OwanbeSpace team.",
+  "site.blog.search_placeholder": "Search posts",
+  "site.blog.empty": "No posts found.",
+  "site.blog.read_more": "Read more",
+  "site.blog.related": "Related posts",
+  "site.article.back": "Back to blog",
+  "site.article.cta.title": "Planning an event?",
+  "site.article.cta.description": "Join the OwanbeSpace waitlist and be first to book venues, planners, and vendors in one place.",
+  "site.article.cta.button": "Join the waitlist"
+}

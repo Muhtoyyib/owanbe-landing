@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install Vite+
+        run: curl -fsSL https://vite.plus | bash
+
+      - name: Install dependencies
+        run: vp install --frozen-lockfile
+
+      - name: Generate
+        run: vp run generate
+
+      - name: Lint
+        run: vp run lint
+
+      - name: Test
+        run: vp test --run
+
+      - name: Build
+        run: vp build

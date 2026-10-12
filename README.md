@@ -1,21 +1,28 @@
-# TanStack Start + shadcn/ui
+# OwanbeSpace Landing
 
-This is a template for a new TanStack Start project with React, TypeScript, and shadcn/ui.
+The public marketing site for [OwanbeSpace](https://owanbespace.com) — the waitlist
+page, marketing surfaces, and the blog. Built with TanStack Start, Vite+, React 19,
+Tailwind 4, and Fumadocs/MDX. Deploys to Cloudflare Workers.
 
-## Adding components
-
-To add components to your app, run the following command:
+## Quick start
 
 ```bash
-npx shadcn@latest add button
+vp install   # deps + codegen
+vp dev       # http://localhost:5177
 ```
 
-This will place the ui components in the `components` directory.
+## Project structure
 
-## Using components
-
-To use the components in your app, import them as follows:
-
-```tsx
-import { Button } from "@/components/ui/button";
 ```
+src/routes/          TanStack Router file routes (/, /blog, sitemap, robots)
+src/features/        landing/ (waitlist page) and blog/ (list + post views)
+src/components/      ui/, mdx/, shared primitives
+src/lib/             site-config, i18n, blog source/loader
+src/styles/          app.css — design tokens + Tailwind
+content/blog/        MDX posts (will become the blog-posts submodule)
+scripts/             codegen + preview helpers
+messages/            Paraglide translation sources
+```
+
+See `CONTRIBUTING.md` for the commit gate and authoring guide, and `AGENTS.md` for
+the durable rules agents follow.

@@ -1,15 +1,53 @@
-node_modules
-.DS_Store
-dist
-dist-ssr
-*.local
-.env*
+# deps
+/node_modules
+
+# generated content
+.contentlayer
+.content-collections
+.source
+src/generated
+src/paraglide
+
+# test & build
+/coverage
+/.stryker-tmp
+/.next/
+/.nitro
+/.output
+/out/
+/build
+/dist
+*.tsbuildinfo
 .tanstack
 .wrangler
-.output
-.vinxi
-__unconfig*
+
+# misc
+.DS_Store
+*.pem
+/.pnp
+.pnp.js
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+bun-debug.log*
+
+# others
+.env*.local
+.vercel
+next-env.d.ts
 todos.json
 
-# typescript
-*.tsbuildinfo
+### Intellij ###
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+out/
+
+# Claude Code (personal)
+.claude
+.agents/settings.local.json
+
+# Vite+ hook dispatcher (generated); committed project hooks stay tracked
+/.vite-hooks/_/

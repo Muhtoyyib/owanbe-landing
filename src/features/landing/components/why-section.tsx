@@ -1,7 +1,7 @@
-import { BENEFITS } from "../data"
-import { BenefitCard } from "./benefit-card"
-import { Container } from "./container"
-import { SectionHeader } from "./section-header"
+import {BENEFITS} from "../data";
+import {BenefitCard} from "./benefit-card";
+import {Container} from "./container";
+import {SectionHeader} from "./section-header";
 
 /** "Why join early" section — benefit grid explaining early-member perks. */
 export function WhySection() {
@@ -20,5 +20,5 @@ export function WhySection() {
         </div>
       </Container>
     </section>
-  )
+  );
 }

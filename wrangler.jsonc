@@ -1,14 +1,15 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  // Worker names must be lowercase alphanumeric with dashes; this also becomes
-  // the *.workers.dev subdomain, so it can't be "Owanbe Space waitlist".
-  "name": "owanbe-space-waitlist",
-  "compatibility_date": "2026-08-04",
+  "name": "owanbespace-landing",
+  "compatibility_date": "2026-03-01",
+  "preview_urls": true,
+  "previews": {},
   "assets": {
     "directory": "./dist/client",
-    "not_found_handling": "single-page-application"
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "single-page-application",
   },
   "observability": {
-    "enabled": true
-  }
+    "enabled": true,
+  },
 }

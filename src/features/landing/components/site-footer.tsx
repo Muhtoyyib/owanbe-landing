@@ -1,15 +1,15 @@
-import { Container } from "./container"
-import { BrandLogo } from "./brand-logo"
-import { InstagramIcon, LinkedinIcon, XIcon } from "./social-icons"
-import { CONTACT_EMAIL } from "../data"
+import {Container} from "./container";
+import {BrandLogo} from "./brand-logo";
+import {InstagramIcon, LinkedinIcon, XIcon} from "./social-icons";
+import {CONTACT_EMAIL} from "../data";
 
-type SocialIcon = (props: React.SVGProps<SVGSVGElement>) => React.JSX.Element
+type SocialIcon = (props: React.SVGProps<SVGSVGElement>) => React.JSX.Element;
 
-const SOCIAL_LINKS: Array<{ label: string; href: string; icon: SocialIcon }> = [
-  { label: "X", href: "https://x.com", icon: XIcon },
-  { label: "Instagram", href: "https://instagram.com", icon: InstagramIcon },
-  { label: "LinkedIn", href: "https://linkedin.com", icon: LinkedinIcon },
-]
+const SOCIAL_LINKS: Array<{label: string; href: string; icon: SocialIcon}> = [
+  {label: "X", href: "https://x.com", icon: XIcon},
+  {label: "Instagram", href: "https://instagram.com", icon: InstagramIcon},
+  {label: "LinkedIn", href: "https://linkedin.com", icon: LinkedinIcon},
+];
 
 export function SiteFooter() {
   return (
@@ -20,10 +20,7 @@ export function SiteFooter() {
         {/* Mobile stacks the logo above a single email + socials row (per the
             mobile design); desktop spreads all three across the bar. */}
         <div className="flex items-center gap-8 md:contents">
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
-            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
+          <a href={`mailto:${CONTACT_EMAIL}`} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
             {CONTACT_EMAIL}
           </a>
 
@@ -44,5 +41,5 @@ export function SiteFooter() {
         </div>
       </Container>
     </footer>
-  )
+  );
 }

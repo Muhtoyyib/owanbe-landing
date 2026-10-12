@@ -1,16 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router"
+import {createFileRoute} from "@tanstack/react-router";
 
-import {
-  FaqSection,
-  GlimpseSection,
-  HeroSection,
-  SiteFooter,
-  SiteNav,
-  WaitlistSection,
-  WhySection,
-} from "@/features/landing"
+import {FaqSection, GlimpseSection, HeroSection, SiteFooter, SiteNav, WaitlistSection, WhySection} from "@/features/landing";
 
-export const Route = createFileRoute("/")({ component: LandingPage })
+export const Route = createFileRoute("/")({component: LandingPage});
 
 function LandingPage() {
   return (
@@ -25,5 +17,5 @@ function LandingPage() {
       </main>
       <SiteFooter />
     </div>
-  )
+  );
 }

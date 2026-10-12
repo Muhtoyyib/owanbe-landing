@@ -1,11 +1,11 @@
-import { Accordion } from "@base-ui/react/accordion"
+import {Accordion} from "@base-ui/react/accordion";
 
-import { cn } from "@/lib/utils"
+import {cn} from "cn";
 
-import type { FaqItem as FaqItemData } from "../types"
+import type {FaqItem as FaqItemData} from "../types";
 
 interface FaqItemProps {
-  item: FaqItemData
+  item: FaqItemData;
 }
 
 /**
@@ -17,7 +17,7 @@ interface FaqItemProps {
  * animate. Single-open behaviour (opening one closes the others) is handled by
  * the parent <Accordion.Root> in faq-section.
  */
-export function FaqItem({ item }: FaqItemProps) {
+export function FaqItem({item}: FaqItemProps) {
   return (
     <Accordion.Item
       value={item.id}
@@ -52,10 +52,8 @@ export function FaqItem({ item }: FaqItemProps) {
           "data-[starting-style]:h-0 data-[ending-style]:h-0"
         )}
       >
-        <p className="px-6 pb-5 text-base leading-relaxed text-muted-foreground">
-          {item.answer}
-        </p>
+        <p className="px-6 pb-5 text-base leading-relaxed text-muted-foreground">{item.answer}</p>
       </Accordion.Panel>
     </Accordion.Item>
-  )
+  );
 }

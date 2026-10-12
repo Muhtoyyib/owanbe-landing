@@ -1,27 +1,23 @@
-import { cn } from "@/lib/utils"
+import {cn} from "cn";
 
-import { ROLES } from "../data"
-import type { WhoYouAre } from "../api/waitlist"
+import {ROLES} from "../data";
+import type {WhoYouAre} from "../api/waitlist";
 
 interface RoleSelectorProps {
-  value: WhoYouAre | null
-  onChange: (id: WhoYouAre) => void
-  disabled?: boolean
+  value: WhoYouAre | null;
+  onChange: (id: WhoYouAre) => void;
+  disabled?: boolean;
 }
 
 /**
  * Responsive grid of selectable role chips for the "I am a…" field.
  * Single responsibility: render ROLES and surface the selected id.
  */
-export function RoleSelector({
-  value,
-  onChange,
-  disabled,
-}: RoleSelectorProps) {
+export function RoleSelector({value, onChange, disabled}: RoleSelectorProps) {
   return (
     <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
       {ROLES.map((role) => {
-        const selected = value === role.id
+        const selected = value === role.id;
         return (
           <button
             key={role.id}
@@ -38,8 +34,8 @@ export function RoleSelector({
           >
             {role.label}
           </button>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

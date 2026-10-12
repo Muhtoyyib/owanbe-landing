@@ -4,46 +4,28 @@
  * They accept a className like any lucide icon (currentColor fill).
  */
 
-type IconProps = React.SVGProps<SVGSVGElement>
+type IconProps = React.SVGProps<SVGSVGElement>;
 
-export function XIcon({ className, ...props }: IconProps) {
+export function XIcon({className, ...props}: IconProps) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-      className={className}
-      {...props}
-    >
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className} {...props}>
       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" />
     </svg>
-  )
+  );
 }
 
-export function InstagramIcon({ className, ...props }: IconProps) {
+export function InstagramIcon({className, ...props}: IconProps) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-      className={className}
-      {...props}
-    >
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className} {...props}>
       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.336 3.608 1.311.975.975 1.249 2.242 1.311 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.336 2.633-1.311 3.608-.975.975-2.242 1.249-3.608 1.311-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.336-3.608-1.311-.975-.975-1.249-2.242-1.311-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.336-2.633 1.311-3.608.975-.975 2.242-1.249 3.608-1.311C8.416 2.175 8.796 2.163 12 2.163Zm0 1.802c-3.15 0-3.522.012-4.765.069-.999.046-1.542.212-1.903.353-.478.186-.82.408-1.179.767-.359.359-.581.7-.767 1.179-.14.361-.307.904-.353 1.903-.057 1.243-.069 1.615-.069 4.765s.012 3.522.069 4.765c.046.999.213 1.542.353 1.903.186.478.408.82.767 1.179.359.359.701.581 1.179.767.361.14.904.307 1.903.353 1.243.057 1.615.069 4.765.069s3.522-.012 4.765-.069c.999-.046 1.542-.213 1.903-.353.478-.186.82-.408 1.179-.767.359-.359.581-.701.767-1.179.14-.361.307-.904.353-1.903.057-1.243.069-1.615.069-4.765s-.012-3.522-.069-4.765c-.046-.999-.213-1.542-.353-1.903-.186-.478-.408-.82-.767-1.179-.359-.359-.701-.581-1.179-.767-.361-.14-.904-.307-1.903-.353-1.243-.057-1.615-.069-4.765-.069Zm0 3.064A5.135 5.135 0 1 0 12 17.135 5.135 5.135 0 0 0 12 7.03Zm0 8.468A3.333 3.333 0 1 1 12 8.83a3.333 3.333 0 0 1 0 6.668Zm5.338-9.87a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z" />
     </svg>
-  )
+  );
 }
 
-export function LinkedinIcon({ className, ...props }: IconProps) {
+export function LinkedinIcon({className, ...props}: IconProps) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-      className={className}
-      {...props}
-    >
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className} {...props}>
       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124ZM7.114 20.452H3.555V9h3.559v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z" />
     </svg>
-  )
+  );
 }

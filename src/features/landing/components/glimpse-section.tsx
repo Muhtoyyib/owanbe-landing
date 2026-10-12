@@ -1,6 +1,6 @@
-import { Container } from "./container"
-import { ProductPreview } from "./product-preview"
-import { SectionHeader } from "./section-header"
+import {Container} from "./container";
+import {ProductPreview} from "./product-preview";
+import {SectionHeader} from "./section-header";
 
 /** "A look inside" section — mock app-window previews of the product. */
 export function GlimpseSection() {
@@ -18,5 +18,5 @@ export function GlimpseSection() {
         </div>
       </Container>
     </section>
-  )
+  );
 }

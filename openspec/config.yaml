@@ -1,0 +1,9 @@
+schema: spec-driven
+
+# Project context shown to AI when creating artifacts.
+context: |
+  OwanbeSpace landing — marketing site + waitlist + blog for a Nigerian event
+  marketplace. TanStack Start + React 19 + Vite+ + Tailwind 4 + Fumadocs MDX.
+  Deploys to Cloudflare Workers. Conventional commits. Oxlint/Oxfmt via vp.
+  Blog frontmatter schema lives in source.config.ts and must stay in sync with
+  blog-posts/schema.json once that repo exists.
