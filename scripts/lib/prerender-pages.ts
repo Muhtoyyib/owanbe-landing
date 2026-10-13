@@ -6,7 +6,7 @@ export interface StaticPrerenderPage {
   path: string;
 }
 
-const MDX_EXTENSION = /\.(mdx|md)$/u;
+const MDX_EXTENSION = /\.mdx$/u;
 
 async function walkMdxFiles(dir: string): Promise<string[]> {
   let entries: Dirent[];
@@ -21,7 +21,8 @@ async function walkMdxFiles(dir: string): Promise<string[]> {
   const files = await Promise.all(
     entries.map(async (entry) => {
       const fullPath = path.join(dir, entry.name);
-      if (entry.isDirectory()) return walkMdxFiles(fullPath);
+      // Dot-directories (.agents, .github, .git) are repo tooling, not content.
+      if (entry.isDirectory()) return entry.name.startsWith(".") ? [] : walkMdxFiles(fullPath);
       return MDX_EXTENSION.test(entry.name) ? [fullPath] : [];
     })
   );
