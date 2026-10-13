@@ -1,3 +1,3 @@
 [submodule "content/blog"]
 	path = content/blog
-	url = git@github.com:Muhtoyyib/owanbe-blog-posts.git
+	url = https://github.com/Muhtoyyib/owanbe-blog-posts.git

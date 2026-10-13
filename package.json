@@ -11,6 +11,7 @@
     "clean": "rm -rf dist",
     "dev": "vp dev --force",
     "generate": "fumadocs-mdx && vp run generate:paraglide",
+    "pregenerate": "git submodule update --init --recursive",
     "generate:paraglide": "node scripts/generate-paraglide.ts",
     "start": "vp preview",
     "serve": "vp dlx serve@latest --no-port-switching -c serve.json dist/client -l tcp://127.0.0.1:4173",
