@@ -63,7 +63,7 @@ vp fmt                      # Format with Oxfmt
 vp test --run               # Vitest single pass
 vp run test:coverage        # Vitest with coverage
 vp run serve                # Serve the production build locally
-vp run cf:upload            # Upload a tagged Worker version (CI deploy step)
+vp run cf:upload            # Upload a tagged Worker version (Workers Builds deploy command)
 ```
 
 ## Product And Design Rules

@@ -48,6 +48,12 @@ when a language lands.
 
 ## Deploying
 
-Merges to `main` run `.github/workflows/deploy.yml`, which uploads a tagged
-Cloudflare Worker version (`owanbespace-landing`). Traffic promotion is handled
-in Cloudflare. Required repo secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`.
+The repo is connected to the `owanbespace-landing` Worker via **Workers
+Builds** (Cloudflare dashboard → Workers & Pages → the Worker → Settings →
+Build). Pushes to `main` build and run `cf:upload`, which uploads a tagged
+Worker version at 0% traffic; promote it in the dashboard (Workers → Versions).
+Pull requests get a preview URL (`preview_urls: true` in `wrangler.jsonc`).
+
+There is intentionally no GitHub Actions deploy workflow — Workers Builds owns
+build+upload so versions and previews come from one place. A `rollout.yml` for
+automated traffic ramps can come later.
